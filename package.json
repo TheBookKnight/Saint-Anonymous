@@ -1,0 +1,27 @@
+{
+  "name": "saint-anonymous",
+  "version": "1.0.0",
+  "description": "For anonymous prayer requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaTheEngineer/Saint-Anonymous.git"
+  },
+  "keywords": [
+    "Prayer",
+    "Catholic",
+    "JavaScript"
+  ],
+  "author": "Joshua Cadavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaTheEngineer/Saint-Anonymous/issues"
+  },
+  "homepage": "https://github.com/JoshuaTheEngineer/Saint-Anonymous#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
