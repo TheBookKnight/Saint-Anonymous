@@ -2,20 +2,15 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('anonymous-prayer')
-        .setDescription('I will share your prayer whether anonymously or not.')
+        .setName('anon-prayer')
+        .setDescription('Shares your prayer anonymously.')
         .addStringOption(option => option
             .setName('prayer')
-            .setDescription(`What's your prayer, young child?`)
-            .setRequired(true))
-        .addStringOption(option => option
-            .setName('requester')
-            .setDescription('You can include your name. If not, no worries.')),
+            .setDescription("What prayer do you want to share anonymously?")
+            .setRequired(true)),
         async execute(interaction) {
-            const prayer = interaction.options.getString('prayer');
-            let requester = interaction.options.getString('requester');
-            requester = `\nRequester is: ${requester ? requester : 'Anonymous'}`
+            const prayer = `Please pray for below:\n${interaction.options.getString('prayer')}\n\nRequester is: Anonymous`;
             await interaction.reply({ content: 'You sent a prayer!', ephemeral: true});
-            await interaction.followUp(`Please pray: ${prayer}.${requester}`);
+            await interaction.followUp(prayer);
         }
 }
