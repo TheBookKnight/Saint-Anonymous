@@ -9,7 +9,7 @@ module.exports = {
             .setDescription("What prayer do you want to share anonymously?")
             .setRequired(true)),
         async execute(interaction) {
-            const prayer = `Please pray for below:\n${interaction.options.getString('prayer')}\n\nRequester is: Anonymous`;
+            const prayer = `Prayer Request:\n${interaction.options.getString('prayer')}\n\nRequester wishes to remain anonymous`;
             await interaction.reply({ content: 'You sent a prayer!', ephemeral: true});
             await interaction.followUp(prayer);
         }

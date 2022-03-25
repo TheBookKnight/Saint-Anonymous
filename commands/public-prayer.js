@@ -9,7 +9,7 @@ module.exports = {
             .setDescription('What would you like to have prayers for?')
             .setRequired(true)),
         async execute(interaction) {
-            const prayer = `Please pray for below:\n${interaction.options.getString('prayer')}\n\nRequester is: ${interaction.user.tag}`;
+            const prayer = `Prayer Request:\n${interaction.options.getString('prayer')}\n\nRequester:\n${interaction.user.tag}`;
             await interaction.reply(prayer);
         }
 }
