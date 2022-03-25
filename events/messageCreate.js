@@ -10,10 +10,10 @@ module.exports = {
 
         if (message.channel.type === "DM" && message.author.id !== client.user.id) {
             if (prayerChannel) {
-                prayerChannel.send(`Prayer Request:\n${message.content}\n\nRequester wishes to remain anonymous`);
-                return message.reply('Saint Anonymous shared your prayer.');
+                prayerChannel.send(`Prayer Request 🙏\n${message.content}\n\nRequester wishes to remain anonymous`);
+                return message.reply('Saint Anonymous shared your prayer 🙏');
             } else {
-                return message.reply('Saint Anonymous cannot find the #prayer-channel. Please create one before sending another');
+                return message.reply('Saint Anonymous cannot find the #prayer-channel\nPlease create one before trying again.');
             }
         }
 	},
