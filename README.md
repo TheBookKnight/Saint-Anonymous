@@ -2,6 +2,11 @@
 
 A Discord bot to create Anonymous Prayer Requests and more
 
+## Prerequisites
+
+1. Download latest [NodeJS](https://nodejs.org/en/) (here was v16.14.x)
+2. Setup a [Discord Developer account](https://discord.com/login?redirect_to=%2Fdevelopers%2Fapplications)
+
 ## Setup Instructions
 
 1. Download this repo
