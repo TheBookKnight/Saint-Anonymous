@@ -19,6 +19,9 @@ for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
+	} else if (event.name === 'messageCreate') {
+		let guild = JSON.parse(fs.readFileSync('config.json'));
+		client.on(event.name, async (...args) => await event.execute(client, guild['guildId'], ...args));
 	} else {
 		client.on(event.name, async (...args) => await event.execute(client, ...args));
 	}
