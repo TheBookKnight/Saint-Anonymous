@@ -10,12 +10,13 @@ module.exports = {
 
         if (message.channel.type === "DM" && message.author.id !== client.user.id) {
             let prayer = message.content.trim();
+            
             if (prayerChannel) {
                 if (prayer.substr(0,6).toLowerCase() === 'public') {
                     prayer = prayer.substr(6).trim()
-                    prayerChannel.send(`Prayer Request by <@!${message.author.id}> 🙏\n\n${prayer}`);
+                    prayerChannel.send(`**Prayer Request by <@!${message.author.id}>** 🙏\n\n${prayer}`);
                 } else {
-                    prayerChannel.send(`Prayer Request 🙏\n\n${prayer}`);
+                    prayerChannel.send(`**Prayer Request** 🙏\n\n${prayer}`);
                 }
                 return message.reply('Saint Anonymous shared your prayer 🙏');
             } else {
