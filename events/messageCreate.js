@@ -4,7 +4,7 @@ module.exports = {
         let targetGuild = await client.guilds.fetch(guildId);
         let prayerChannel = await targetGuild.channels.fetch()
             .then(channels => {
-                const targetChannel = channels.find(channel => channel.name.toLowerCase() === "prayer-requests")
+                const targetChannel = channels.find(channel => channel.name.toLowerCase().includes("prayer-requests"))
                 return targetChannel;
             })
 
