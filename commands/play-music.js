@@ -4,8 +4,26 @@ const ytdl = require('ytdl-core');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('play-music')
-        .setDescription('Play music.'),
-        async execute(message) {
+        .setDescription('Play music.')
+        .addStringOption(option => option
+            .setName('youtube')
+            .setDescription("What YouTube audio you wanted to play?")
+            .setRequired(true)),
+        async execute(interaction) {
+            const url = interaction.options.getString('youtube');
+            const linkCheck = require('link-check');
+
+            try {
+                linkCheck(url, async function (err, result) {
+                    if (err) { throw new Error("Your url input erred."); }
+                    console.log(`${result.link} is ${result.status}`);
+                    console.log(result);
+                });
+            } catch(error) {
+                console.log(`Error:\t${error.message}`)
+                return await interaction.reply({content: "Not a valid YouTube url.", ephemeral: true});
+            }
+            
             const {
                 AudioPlayerStatus,
                 StreamType,
@@ -14,7 +32,7 @@ module.exports = {
                 joinVoiceChannel,
             } = require('@discordjs/voice');
 
-            let musicChannel = await message.guild.channels.fetch()
+            let musicChannel = await interaction.guild.channels.fetch()
                 .then(channels => {
                     const targetChannel = channels.find(channel => {
                         return channel.name.toLowerCase().includes("music") && channel.type == 'GUILD_VOICE'
@@ -23,17 +41,14 @@ module.exports = {
                 })
                 
             if (typeof musicChannel === 'undefined') {
-                return await message.reply({content: "There's no #music Voice channel. Please create one before trying again.", ephemeral: true});
+                return await interaction.reply({content: "There's no #music Voice channel. Please create one before trying again.", ephemeral: true});
             }
-
-            const url = 'https://www.youtube.com/watch?v=nCf3VA-asuM';
 
             const connection = joinVoiceChannel({
                 channelId: musicChannel.id,
-                guildId: message.guildId,
-                adapterCreator: message.guild.voiceAdapterCreator,
+                guildId: interaction.guildId,
+                adapterCreator: interaction.guild.voiceAdapterCreator,
             });
-
             const stream = ytdl(url, { filter: 'audioonly' });
             const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
             const player = createAudioPlayer();
@@ -42,6 +57,6 @@ module.exports = {
             connection.subscribe(player);
 
             player.on(AudioPlayerStatus.Idle, () => connection.destroy());
-            message.reply({content: "Playing music.", ephemeral: true});
+            interaction.reply({content: `Playing music from ${url}.`, ephemeral: true});
         }
 }

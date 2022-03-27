@@ -2,6 +2,7 @@ version: "3.9"  # optional since v1.27.0
 services:
   discord-bot:
     container_name: saint-anonymous
+    restart: "always"
     build: .
     ports:
       - "8000:8000"
