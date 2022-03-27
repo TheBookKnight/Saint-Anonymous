@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'interactionCreate',
-	execute(client, interaction) {
+	execute(client, guildId, interaction) {
 		console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 		if (!interaction.isCommand()) return;
 
