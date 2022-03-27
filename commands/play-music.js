@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('play-music')
         .setDescription('Play music.'),
-        async execute(message, args) {
+        async execute(message) {
             const {
                 AudioPlayerStatus,
                 StreamType,
