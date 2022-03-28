@@ -26,3 +26,9 @@ See this repo's Wiki - [Chapter 0](https://github.com/JoshuaTheEngineer/joshua-c
 4. Run `node deploy-commands.js` to setup commands
 5. Create a Discord invite link via [this repo's Wiki - Chapter 2](https://github.com/JoshuaTheEngineer/joshua-creates-a-discord-bot/wiki/How-to-Create-a-Discord-Bot#ch-2-setup-your-discord-bot-app-for-the-server).
 6. Run `node .` to start the Bot.
+
+## How to Use Saint Anonymous
+
+1. Directly message Saint Anonymous your prayer. It will share it anonymously to the first channel it finds with #prayer-requests in its name. Only works if it has one.
+
+2. Slash command "/play-music" in the channel followed by the YouTube video url. It will start playing it in the first channel it finds with #music in its name. Only works if it has one.

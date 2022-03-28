@@ -15,9 +15,8 @@ module.exports = {
 
             try {
                 linkCheck(url, async function (err, result) {
-                    if (err) { throw new Error("Your url input erred."); }
+                    if (err) { throw new Error("Your url input is invalid."); }
                     console.log(`${result.link} is ${result.status}`);
-                    console.log(result);
                 });
             } catch(error) {
                 console.log(`Error:\t${error.message}`)

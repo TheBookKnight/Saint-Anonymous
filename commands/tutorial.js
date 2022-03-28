@@ -1,10 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const tutorialPublicPrayer = 'In its server, type "\/public-prayer" followed by your prayer. It will publicly share it to the respective channel.'
-const tutorialAnonymousPrayer = 'In its server, type "\/anon-prayer" followed by your prayer. It will anonymously share it to the respective channel.'
 const tutorialDMBot = 'Directly message Saint Anonymous your prayer. It will share it to the #prayer-requests channel anonymously. Only works if it has one.'
+const tutorialMusic = 'Slash command "/play-music" followed by the YouTube video url. It will start playing it in the #music channel. Only works if it has one.'
 
-const message = `To use Saint Anonymous...\n\n${tutorialPublicPrayer}\n\n${tutorialAnonymousPrayer}\n\n${tutorialDMBot}`;
+const message = `To use Saint Anonymous...\n\n${tutorialDMBot}\n\n${tutorialMusic}`;
 
 module.exports = {
     data: new SlashCommandBuilder()
