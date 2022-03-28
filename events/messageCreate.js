@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js')
+
 module.exports = {
 	name: 'messageCreate',
 	async execute(client, guildId, message) {
@@ -12,12 +14,21 @@ module.exports = {
             let prayer = message.content.trim();
             
             if (prayerChannel) {
-                if (prayer.substr(0,6).toLowerCase() === 'public') {
-                    prayer = prayer.substr(6).trim()
-                    prayerChannel.send(`**Prayer Request by <@!${message.author.id}>** 🙏\n\n${prayer}`);
+                const prayerEmbed = new MessageEmbed()
+                    .setColor('#0099ff')
+                    .setTitle('Prayer Request 🙏');
+                const publicStatus = prayer.substr(0,6).toLowerCase() === 'public';
+                if (publicStatus) {
+                    prayer = prayer.substr(6);
+                    prayerEmbed
+                        .setAuthor({ name: `By ${message.author.username}`, iconURL: message.author.avatarURL()})
+                        .setDescription(`${prayer}\nBy <@!${message.author.id}>`)
                 } else {
-                    prayerChannel.send(`**Prayer Request** 🙏\n\n${prayer}`);
+                    prayerEmbed
+                        .setAuthor({ name: 'Anonymous', iconURL: 'https://i.imgur.com/AfFp7pu.png'})
+                        .setDescription(prayer)
                 }
+                prayerChannel.send({ embeds: [prayerEmbed] });
                 return message.reply('Saint Anonymous shared your prayer 🙏');
             } else {
                 return message.reply('Saint Anonymous cannot find the #prayer-channel\nPlease create one before trying again.');
