@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const message = 'Hello, my name is Saint Anonymous.\n\nMy calling is to share your prayers anonymously. I am ordained by Joshua Cadavez, the almighty but humble tech master.\n\nRevere him by dedicating 10 decades of the Rosary.';
+const message = 'Hello, I am Saint Anonymous.\n\nMy calling is to share your prayers anonymously. I am ordained by Joshua Cadavez, the almighty but humble tech master.\n\nRevere him with 10 decades of the Rosary.';
 
 module.exports = {
     data: new SlashCommandBuilder()

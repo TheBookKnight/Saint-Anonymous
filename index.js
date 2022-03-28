@@ -5,7 +5,8 @@ const { token } = require('./config.json');
 const client = new Client({ 
 	intents: [
 		Intents.FLAGS.GUILDS, 
-		Intents.FLAGS.DIRECT_MESSAGES
+		Intents.FLAGS.DIRECT_MESSAGES,
+		Intents.FLAGS.GUILD_VOICE_STATES
 	],
 	partials: [
         'CHANNEL', // Required to receive DMs
@@ -18,12 +19,10 @@ const eventFiles = fs.readdirSync('./events')
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
-	} else if (event.name === 'messageCreate') {
+		client.once(event.name, (...args) => event.execute(client, ...args));
+	} else {
 		let guild = JSON.parse(fs.readFileSync('config.json'));
 		client.on(event.name, async (...args) => await event.execute(client, guild['guildId'], ...args));
-	} else {
-		client.on(event.name, async (...args) => await event.execute(client, ...args));
 	}
 }
 
