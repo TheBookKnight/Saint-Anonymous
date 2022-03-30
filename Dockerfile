@@ -10,13 +10,10 @@ RUN npm install
 # Copy rest of source code
 COPY . /usr/src/bot
 
-# Deploy commands
-RUN npm run setup
-
 # Install ffmpeg dependencies
 RUN apk update
 RUN apk add
 RUN apk add ffmpeg
 
 # Start the bot.
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
