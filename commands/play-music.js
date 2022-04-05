@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const ytdl = require('ytdl-core');
+const play = require('play-dl')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,13 +19,15 @@ module.exports = {
                     console.log(`${result.link} is ${result.status}`);
                 });
             } catch(error) {
-                console.log(`Error:\t${error.message}`)
+                console.log('------------------------------')
+                console.log('LINK ERROR')
+                console.log(error)
+                console.log('------------------------------')
                 return await interaction.reply({content: "Not a valid YouTube url.", ephemeral: true});
             }
             
             const {
                 AudioPlayerStatus,
-                StreamType,
                 createAudioPlayer,
                 createAudioResource,
                 joinVoiceChannel,
@@ -48,14 +50,22 @@ module.exports = {
                 guildId: interaction.guildId,
                 adapterCreator: interaction.guild.voiceAdapterCreator,
             });
-            const stream = ytdl(url, { filter: 'audioonly' });
-            const resource = createAudioResource(stream, { inputType: StreamType.Arbitrary });
-            const player = createAudioPlayer();
+            try {
+                let { stream, type } = await play.stream(url, {});
+                const resource = createAudioResource(stream, { inputType: type });
+                const player = createAudioPlayer();
+    
+                player.play(resource);
+                connection.subscribe(player);
+                player.on(AudioPlayerStatus.Idle, () => connection.destroy());
 
-            player.play(resource);
-            connection.subscribe(player);
-
-            player.on(AudioPlayerStatus.Idle, () => connection.destroy());
-            interaction.reply({content: `Playing music from ${url}.`, ephemeral: true});
+                interaction.reply({content: `Playing music from ${url} on channel <#${musicChannel.id}>`, ephemeral: true});
+            } catch (error) {
+                console.log('------------------------------')
+                console.log('STREAM ERROR')
+                console.log(error)
+                console.log('------------------------------')
+                interaction.reply({content: 'There was an issue playing the YouTube video.', ephemeral: true});
+            }
         }
 }
