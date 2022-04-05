@@ -1,6 +1,9 @@
 # ---- DEPENDENCIES -----
 FROM node:16.14.2-alpine3.14 AS dependencies
 
+RUN mkdir -p /usr/src/bot
+WORKDIR /usr/src/bot
+
 ## Install Python
 RUN apk add --update python3 make g++ && rm -rf /var/cache/apk/*
 
@@ -12,11 +15,7 @@ RUN npm install opusscript
 RUN npm install node-opus
 
 # Install rest of dependencies
-RUN npm install 
-
-# Remove play-dl's dependency's node_modules
-RUN npm prune opusscript
-RUN npm prune node-opus
+RUN npm install
 
 # -------- BASE --------
 FROM node:16.14.2-alpine3.14 AS base
@@ -25,7 +24,7 @@ RUN mkdir -p /usr/src/bot
 WORKDIR /usr/src/bot
 
 # Copy node_modules
-COPY --from=dependencies node_modules .
+COPY --from=dependencies /usr/src/bot .
 
 # Copy rest of the source code
 COPY . .
