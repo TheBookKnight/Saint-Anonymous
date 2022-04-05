@@ -10,7 +10,7 @@ module.exports = {
             .setDescription("What YouTube audio you wanted to play?")
             .setRequired(true)),
         async execute(interaction) {
-            const url = interaction.options.getString('youtube');
+            let url = interaction.options.getString('youtube');
             const linkCheck = require('link-check');
 
             try {
@@ -18,9 +18,9 @@ module.exports = {
                     if (err) { throw new Error("Your url input is invalid."); }
                     console.log(`${result.link} is ${result.status}`);
                 });
+                url = new URL(url);
             } catch(error) {
-                console.log('------------------------------')
-                console.log('LINK ERROR')
+                console.log('----------LINK ERROR----------')
                 console.log(error)
                 console.log('------------------------------')
                 return await interaction.reply({content: "Not a valid YouTube url.", ephemeral: true});
@@ -50,8 +50,16 @@ module.exports = {
                 guildId: interaction.guildId,
                 adapterCreator: interaction.guild.voiceAdapterCreator,
             });
+
             try {
-                let { stream, type } = await play.stream(url, {});
+                let seconds;
+                if (url.searchParams) {
+                    seconds = url.searchParams.get('t') ? Number(url.searchParams.get('t').replace('s','')) : 0;
+                } else {
+                    interaction.reply({content: `The below url should have the hostname **www.youtube.com**:\n${url.toString()}`})
+                    throw new Error('Invalid URL.')
+                }
+                let { stream, type } = await play.stream(url.toString(), { seek: seconds });
                 const resource = createAudioResource(stream, { inputType: type });
                 const player = createAudioPlayer();
     
@@ -59,10 +67,9 @@ module.exports = {
                 connection.subscribe(player);
                 player.on(AudioPlayerStatus.Idle, () => connection.destroy());
 
-                interaction.reply({content: `Playing music from ${url} on channel <#${musicChannel.id}>`, ephemeral: true});
+                interaction.reply({content: `Playing on channel <#${musicChannel.id}>\n${url}`, ephemeral: true});
             } catch (error) {
-                console.log('------------------------------')
-                console.log('STREAM ERROR')
+                console.log('--------STREAM ERROR----------')
                 console.log(error)
                 console.log('------------------------------')
                 interaction.reply({content: 'There was an issue playing the YouTube video.', ephemeral: true});
