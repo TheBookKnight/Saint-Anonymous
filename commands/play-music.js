@@ -56,7 +56,7 @@ module.exports = {
                 if (url.searchParams) {
                     seconds = url.searchParams.get('t') ? Number(url.searchParams.get('t').replace('s','')) : 0;
                 } else {
-                    interaction.reply({content: `The below url should have the hostname **www.youtube.com**:\n${url.toString()}`})
+                    interaction.reply({content: `The below url should have the hostname **www.youtube.com**:\n${url.toString()}`, ephemeral: true})
                     throw new Error('Invalid URL.')
                 }
                 let { stream, type } = await play.stream(url.toString(), { seek: seconds });
