@@ -32,3 +32,5 @@ See this repo's Wiki - [Chapter 0](https://github.com/JoshuaTheEngineer/joshua-c
 1. Directly message Saint Anonymous your prayer. It will share it anonymously to the first channel it finds with #prayer-requests in its name. Only works if it has one.
 
 2. Slash command "/play-music" in the channel followed by the YouTube video url. It will start playing it in the first channel it finds with #music in its name. Only works if it has one.
+
+3. Slash command "/rosary" in the channel and it will assign all members roles in praying the Rosary in a Voice Channel with name 'rosary'. You have the option to choose who can do the opening/closing prayer and reading the mysteries.
