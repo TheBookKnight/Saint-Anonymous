@@ -42,7 +42,7 @@ module.exports = {
                 })
                 
             if (typeof musicChannel === 'undefined') {
-                return await interaction.reply({content: "There's no #music Voice channel. Please create one before trying again.", ephemeral: true});
+                return await interaction.reply({content: "There's no Music Voice channel. Please create one before trying again.", ephemeral: true});
             }
 
             const connection = joinVoiceChannel({
