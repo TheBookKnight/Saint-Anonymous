@@ -9,9 +9,15 @@ build/full:
 build/lite:
 	@docker build --tag cadav001/saint-anonymous:lite --file ./deployments/lite/Dockerfile .
 
-## deploy-commands: deploys Discord commands tos erver
-.PHONY: deploy-commands
-deploy-commands:
+# deploy
+.PHONY: deploy/full deploy/lite
+
+## deploy/full: deploys Discord commands to server including music player's
+deploy/full:
+	@VERSION=FULL npm run setup
+
+## deploy/lite: deploys Discord commands to server
+deploy/lite:
 	@npm run setup
 
 # start
@@ -30,11 +36,11 @@ start/lite:
 # stop
 .PHONY: stop/full stop/lite
 
-## stop/full: 
+## stop/full: Stops Saint Anonymous full setup
 stop/full:
 	@docker-compose --file docker-compose.full.yml down --volumes
 
-## stop/lite:
+## stop/lite: Stops Saint Anonymous lite setup
 stop/lite:
 	@docker-compose --file docker-compose.lite.yml down --volumes
 
