@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  discord-bot:
+    image: cadav001/saint-anonymous:full
+    container_name: saint-anonymous
+    restart: "on-failure"
+    ports:
+      - "8000:8000"
+    command: ["VERSION=FULL", "npm", "run", "dev"]

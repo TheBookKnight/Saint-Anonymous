@@ -13,10 +13,11 @@ module.exports = {
             try {
                 let coreChannel = await interaction.guild.channels.fetch()
                     .then(channels => {
+                        console.log(channels)
                         const targetChannel = channels.find(channel => 
                             {
-                                return channel.name.toLowerCase().includes("joshua’s-channel") && channel.type == 'GUILD_TEXT';
-                            }) // eventually 'Core Group'
+                                return channel.name.toLowerCase().includes("core group") && channel.type == 'GUILD_TEXT';
+                            })
                         return targetChannel;
                     })
                 if (coreChannel) {

@@ -27,12 +27,21 @@ for (const file of eventFiles) {
 }
 
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands')
+let commandFiles = fs.readdirSync('./commands/active')
 	.filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
+	const command = require(`./commands/active/${file}`);
 	client.commands.set(command.data.name, command);
+}
+
+// Adds music commands if full version is loaded
+if(process.env.VERSION == 'FULL') {
+	commandFiles = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const command = require(`./commands/music/${file}`);
+		client.commands.set(command.data.name, command);
+	}
 }
 
 client.login(token);

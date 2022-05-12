@@ -30,4 +30,4 @@ COPY --from=dependencies /usr/src/bot .
 COPY . .
 
 # Start the bot.
-CMD ["npm", "run", "dev"]
+CMD ["VERSION=FULL", "npm", "run", "dev"]
