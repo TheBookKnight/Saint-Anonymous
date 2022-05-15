@@ -66,7 +66,7 @@ const mondayReminder = new cron('0 11 * * 1', async function() {
 
 		const reminderEmbed = new MessageEmbed()
 			.setTitle('Good Morning!')
-			.setDescription('My name is Saint Anonymous. \n\nI share both your prayers and concerns anonymously. \n\nPlease share your prayer requests for rosary tonight. If something or someone concerns you, share it as a concern and the CORE group will look into it. \n\nGod bless you and take care!')
+			.setDescription('My name is Saint Anonymous. \n\nI share your thoughts anonymously. \n\nPlease share your prayer requests for rosary tonight. I can share your private thoughts to the CORE group as well. \n\nGod bless you and take care!')
 			.setColor('#add8e6')
 			.addFields(
 				{
@@ -74,8 +74,8 @@ const mondayReminder = new cron('0 11 * * 1', async function() {
 					value: "DM Saint Anonymous your prayer request."
 				},
 				{
-					name: "Share your Concerns Anonymously", 
-					value: "In the banter channel, type `/concern` followed by your concern. The CORE Group will read it."
+					name: "Share your Thoughts to the CORE group Anonymously", 
+					value: "In the banter channel, type `/core` followed by your thoughts. The CORE Group will read it."
 				}
 			);
 		await banterChannel.send({ embeds: [reminderEmbed]})
