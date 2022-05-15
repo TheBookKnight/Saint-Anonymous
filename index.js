@@ -51,8 +51,8 @@ if(process.env.VERSION == 'FULL') {
 
 client.login(token);
 
-// Reminds to share prayers on Monday, 7 am EST  
-const mondayReminder = new cron('0 11 * * 1', async function() {
+// Reminds to share prayers on Sunday, 3 pm EST  
+const mondayReminder = new cron('0 19 * * 0', async function() {
 	let targetGuild = await client.guilds.fetch(guild['guildId']);
 	if (targetGuild) {
 		let banterChannel = await targetGuild.channels.fetch()
@@ -66,16 +66,20 @@ const mondayReminder = new cron('0 11 * * 1', async function() {
 
 		const reminderEmbed = new MessageEmbed()
 			.setTitle('Good Morning!')
-			.setDescription('My name is Saint Anonymous. \n\nI share your thoughts anonymously. \n\nPlease share your prayer requests for rosary tonight. I can share your private thoughts to the CORE group as well. \n\nGod bless you and take care!')
+			.setDescription('I am Saint Anonymous! \n\nShare with me your prayer requests or praises for rosary tomorrow. \n\nOr play your music in the #music channel (keep it Christian 🧐) \n\nGod bless ya!')
 			.setColor('#add8e6')
 			.addFields(
 				{
 					name: "Share your Prayers Anonymously", 
-					value: "DM Saint Anonymous your prayer request."
+					value: "**DM** me your prayer request. I'll share it anonymously to the #prayers channel"
 				},
 				{
-					name: "Share your Thoughts to the CORE group Anonymously", 
-					value: "In the banter channel, type `/core` followed by your thoughts. The CORE Group will read it."
+					name: "Share your Praises Anonymously", 
+					value: "In the banter channel. type `/praise {PRAISE}` where PRAISE is your praise :)"
+				},
+				{
+					name: "Play your YouTube Music Anonymously", 
+					value: "In the banter channel, type `/sing {YT_URL}` where YT_URL is the YouTube video url. \nI'll play it on the #music voice channel.\nTo stop it, run `/hush`"
 				}
 			);
 		await banterChannel.send({ embeds: [reminderEmbed]})
