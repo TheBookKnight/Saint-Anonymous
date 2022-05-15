@@ -66,12 +66,13 @@ const mondayReminder = new cron('0 19 * * 0', async function() {
 
 		const reminderEmbed = new MessageEmbed()
 			.setTitle('Good Morning!')
-			.setDescription('I am Saint Anonymous! \n\nShare with me your prayer requests or praises for rosary tomorrow. \n\nOr play your music in the #music channel (keep it Christian 🧐) \n\nGod bless ya!')
+			.setDescription('Share your prayer requests or praises to me for rosary tomorrow. \n\nOr play your music in the #music channel (keep it Christian 🧐) \n\nGod bless ya!')
 			.setColor('#add8e6')
+			.setImage('https://media2.giphy.com/media/l0Iy4YlensjlyFN5e/giphy.gif')
 			.addFields(
 				{
-					name: "Share your Prayers Anonymously", 
-					value: "**DM** me your prayer request. I'll share it anonymously to the #prayers channel"
+					name: "Share your Prayer Request Anonymously", 
+					value: "**DM** me your request. I'll share it to the #prayers channel"
 				},
 				{
 					name: "Share your Praises Anonymously", 
