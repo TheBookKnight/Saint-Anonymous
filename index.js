@@ -52,7 +52,7 @@ if(process.env.VERSION == 'FULL') {
 client.login(token);
 
 // Reminds to share prayers on Sunday, 3 pm EST  
-const mondayReminder = new cron('0 19 * * 0', async function() {
+const reminder = new cron('0 19 * * 0', async function() {
 	let targetGuild = await client.guilds.fetch(guild['guildId']);
 	if (targetGuild) {
 		let banterChannel = await targetGuild.channels.fetch()
@@ -65,26 +65,26 @@ const mondayReminder = new cron('0 19 * * 0', async function() {
 			})
 
 		const reminderEmbed = new MessageEmbed()
-			.setTitle('Good Morning!')
+			.setTitle('Hello There!')
 			.setDescription('Share your prayer requests or praises to me for rosary tomorrow. \n\nOr play your music in the #music channel (keep it Christian 🧐) \n\nGod bless ya!')
 			.setColor('#add8e6')
 			.setImage('https://media2.giphy.com/media/l0Iy4YlensjlyFN5e/giphy.gif')
 			.addFields(
 				{
 					name: "Share your Prayer Request Anonymously", 
-					value: "**DM** me your request. I'll share it to the #prayers channel"
+					value: "**DM** it to me. I'll share it to the #prayers channel"
 				},
 				{
 					name: "Share your Praises Anonymously", 
-					value: "In the banter channel. type `/praise {PRAISE}` where PRAISE is your praise :)"
+					value: "In the banter channel. type `/praise {your praise}`"
 				},
 				{
 					name: "Play your YouTube Music Anonymously", 
-					value: "In the banter channel, type `/sing {YT_URL}` where YT_URL is the YouTube video url. \nI'll play it on the #music voice channel.\nTo stop it, run `/hush`"
+					value: "In the banter channel, type `/sing {youtube url}`.\nI'll play it on the #music voice channel.\nTo stop it, run `/hush`"
 				}
 			);
 		await banterChannel.send({ embeds: [reminderEmbed]})
 	}
 })
 
-mondayReminder.start();
+reminder.start();
