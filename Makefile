@@ -3,11 +3,11 @@
 
 ## build/full: builds Saint Anonymous with music player
 build/full:
-	@docker build --tag cadav001/saint-anonymous:full --file ./deployments/full/Dockerfile .
+	@docker build --tag cadav001/saint-anonymous:full --platform linux/amd64 --file ./deployments/full/Dockerfile .
 
 ## build/lite: builds Saint Anonymous without music player
 build/lite:
-	@docker build --tag cadav001/saint-anonymous:lite --file ./deployments/lite/Dockerfile .
+	@docker build --tag cadav001/saint-anonymous:lite --platform linux/amd64 --file ./deployments/lite/Dockerfile .
 
 # deploy
 .PHONY: deploy/full deploy/lite

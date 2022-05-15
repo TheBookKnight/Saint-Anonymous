@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('stop-music')
-        .setDescription('Stop music.'),
+        .setName('hush')
+        .setDescription('Stops playing Youtube audio.'),
         async execute(message) {
             const voice = require('@discordjs/voice');
             const connection = voice.getVoiceConnection(message.guildId);
