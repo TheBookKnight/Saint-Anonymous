@@ -3,6 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const tutorials = [
     '**DM** Saint Anonymous your prayer. It will share it to the #prayers channel.\n\n',
     'Slash command `/praise {your praise}`. It will share it to the #prayers channel.\n\n',
+    'Slash command `/rosary`. It will assign Rosary roles via people in the Rosary voice channel.\n\n',
     'Slash command `/sing {YouTube URL}`. It will start playing it in the #music channel. To stop it, slash command `/hush`.'
 ]
 

@@ -79,6 +79,10 @@ const reminder = new cron('0 19 * * 0', async function() {
 					value: "In the banter channel. type `/praise {your praise}`"
 				},
 				{
+					name: "Assign Rosary roles", 
+					value: "Have all members in the Rosary voice channel. In the banter channel. type `/rosary`"
+				},
+				{
 					name: "Play your YouTube Music Anonymously", 
 					value: "In the banter channel, type `/sing {youtube url}`.\nI'll play it on the #music voice channel.\nTo stop it, run `/hush`"
 				}
