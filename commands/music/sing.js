@@ -3,8 +3,8 @@ const play = require('play-dl')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('play-music')
-        .setDescription('Play music.')
+        .setName('sing')
+        .setDescription('Plays YouTube audio in the Music Channel.')
         .addStringOption(option => option
             .setName('youtube')
             .setDescription("What YouTube audio you wanted to play?")

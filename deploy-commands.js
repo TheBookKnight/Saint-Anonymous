@@ -4,11 +4,20 @@ const { Routes } = require('discord-api-types/v9');
 const { clientId, guildId, token } = require('./config.json');
 
 const commands = []
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+let commandFiles = fs.readdirSync('./commands/active').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
+	const command = require(`./commands/active/${file}`);
 	commands.push(command.data.toJSON());
+}
+
+// Adds music commands if full version is loaded
+if(process.env.VERSION == 'FULL') {
+	commandFiles = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const command = require(`./commands/music/${file}`);
+		commands.push(command.data.toJSON());
+	}
 }
 
 const rest = new REST({ version: '9' }).setToken(token);
