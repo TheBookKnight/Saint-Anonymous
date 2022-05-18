@@ -30,10 +30,17 @@ See this repo's Wiki - [Chapter 0](https://github.com/JoshuaTheEngineer/joshua-c
 ## How to Use Saint Anonymous
 
 1. Directly message Saint Anonymous your prayer. It will share it anonymously to the first channel it finds with #prayer-requests in its name. Only works if it has one.
-   <img width="294" alt="image" src="https://user-images.githubusercontent.com/13317525/162878378-4491ac9c-cba0-4aa6-8da7-8253e44b04cc.png">
 
-2. Slash command `/sing` in the channel followed by the YouTube video url. It will start playing it in the first channel it finds with #music in its name. Only works if it has one. To stop it playing, run `/hush`
-   <img width="486" alt="image" src="https://user-images.githubusercontent.com/13317525/162878431-ec710882-870d-4fe5-98c1-d04636ab74f9.png">
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/13317525/168947090-5a8f635c-cde5-4983-986c-efbeef7795aa.png">
 
-3. Slash command `/rosary` in the channel and it will assign all members roles in praying the Rosary in a Voice Channel with name 'rosary'. You have the option to choose who can do the opening/closing prayer and reading the mysteries.
-   <img width="563" alt="image" src="https://user-images.githubusercontent.com/13317525/162878465-feb38fdc-cfd7-4177-adc9-88213d5d64cc.png">
+2. Slash command `/sing {youtube url}` in the channel. It will start playing the YouTube video in the first channel it finds with #music in its name. Only works if it has one. To stop it playing, run `/hush`
+
+<img width="458" alt="image" src="https://user-images.githubusercontent.com/13317525/168946833-378a2e32-f486-43ea-af09-debb88db4810.png">
+
+3. Slash command `/praise {enter praise}` in the channel. It will enter the praise with a GIF.
+
+<img width="403" alt="image" src="https://user-images.githubusercontent.com/13317525/168947395-91975fc0-ca0b-4818-a2aa-aa5cda84217f.png">
+
+4. Slash command `/rosary` in the channel and it will assign all members roles in praying the Rosary in a Voice Channel with name 'rosary'. You have the option to choose who can do the opening/closing prayer and reading the mysteries.
+
+<img width="563" alt="image" src="https://user-images.githubusercontent.com/13317525/162878465-feb38fdc-cfd7-4177-adc9-88213d5d64cc.png">
