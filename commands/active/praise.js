@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js')
 
-const { gifs } = require('../../resources/funny-gifs.json');
+const { gifs } = require('../../resources/gifs.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
