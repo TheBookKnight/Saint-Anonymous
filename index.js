@@ -68,7 +68,7 @@ const reminder = new cron('0 19 * * 0', async function() {
 			.setTitle('Hello There!')
 			.setDescription('Share your prayer requests or praises to me for rosary tomorrow. \n\nOr play your music in the #music channel (keep it Christian 🧐) \n\nGod bless ya!')
 			.setColor('#add8e6')
-			.setImage('https://media2.giphy.com/media/l0Iy4YlensjlyFN5e/giphy.gif')
+			.setImage('https://media.giphy.com/media/yNF0XKi2ZLuow/giphy.gif')
 			.addFields(
 				{
 					name: "Share your Prayer Request Anonymously", 
