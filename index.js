@@ -42,6 +42,7 @@ for (const file of commandFiles) {
 
 // Adds music commands if full version is loaded
 if(process.env.VERSION == 'FULL') {
+	console.log("Loading Music Commands...")
 	commandFiles = fs.readdirSync('./commands/music').filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) {
 		const command = require(`./commands/music/${file}`);
