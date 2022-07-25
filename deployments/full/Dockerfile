@@ -22,6 +22,7 @@ FROM node:16.14.2-alpine3.14 AS base
 
 RUN mkdir -p /usr/src/bot
 WORKDIR /usr/src/bot
+ENV VERSION=FULL
 
 # Copy node_modules
 COPY --from=dependencies /usr/src/bot .

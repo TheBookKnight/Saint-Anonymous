@@ -4,8 +4,6 @@ services:
     image: cadav001/saint-anonymous:full
     container_name: saint-anonymous
     restart: "on-failure"
-    environment:
-      - VERSION=FULL
     ports:
       - "8000:8000"
     command: ["npm", "run", "dev"]
