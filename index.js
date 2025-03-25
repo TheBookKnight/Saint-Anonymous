@@ -42,8 +42,8 @@ for (const file of commandFiles) {
 
 client.login(token);
 
-// Reminds to share prayers on every other Sunday, 3 pm EST  
-const reminder = new cron('0 19 * * 0/2', async function () {
+// Reminds to share prayers on every 15th of each month, 3 pm EST  
+const reminder = new cron('0 19 15 * *', async function () {
 	let targetGuild = await client.guilds.fetch(guild['guildId']);
 	if (targetGuild) {
 		let banterChannel = await targetGuild.channels.fetch()
