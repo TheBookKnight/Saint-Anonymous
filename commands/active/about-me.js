@@ -1,11 +1,11 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const message = 'Hello, I am Saint Anonymous.\n\nMy calling is to share your prayers anonymously. I am ordained by Joshua Cadavez, the almighty but humble tech master.\n\nRevere him with 10 decades of the Rosary.';
+const message = 'Hello, I am Saint Anonymous.\n\nMy calling is to share your prayers and praises anonymously. Joshua Cadavez is my creator. If you have any suggestions to how may I best serve you, reach out to the Core team.';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('about-me')
         .setDescription('About the Saint Anonymous bot'),
-        async execute(interaction) {
-            await interaction.reply({content: message, ephemeral: true});
-        }
+    async execute(interaction) {
+        await interaction.reply({ content: message, ephemeral: true });
+    }
 }

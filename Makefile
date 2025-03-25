@@ -1,48 +1,31 @@
 # build
-.PHONY: build/full build/lite
+.PHONY: build
 
-## build/full: builds Saint Anonymous with music player
-build/full:
-	@docker build --tag cadav001/saint-anonymous:full --platform linux/amd64 --file ./deployments/full/Dockerfile .
-
-## build/lite: builds Saint Anonymous without music player
-build/lite:
-	@docker build --tag cadav001/saint-anonymous:lite --platform linux/amd64 --file ./deployments/lite/Dockerfile .
+## build: builds Saint Anonymous
+build:
+	@docker build --tag cadav001/saint-anonymous:latest --platform linux/amd64 --file ./deployments/Dockerfile .
 
 # deploy
-.PHONY: deploy/full deploy/lite
+.PHONY: deploy
 
-## deploy/full: deploys Discord commands to server including music player's
-deploy/full:
-	@VERSION=FULL npm run setup
-
-## deploy/lite: deploys Discord commands to server
-deploy/lite:
+## deploy: deploys Discord commands to server
+deploy:
 	@npm run setup
 
 # start
-.PHONY: start/full start/lite
+.PHONY: start
 
-## start/full: starts up Saint Anonymous docker image with music player
-start/full:
-	@docker-compose --file docker-compose.full.yml build
-	@docker-compose --file docker-compose.full.yml up --detach
-
-## start/lite: starts up Saint Anonymous docker image with music player
-start/lite:
-	@docker-compose --file docker-compose.lite.yml build
-	@docker-compose --file docker-compose.lite.yml up --detach
+## start: starts up Saint Anonymous docker image
+start:
+	@docker compose --file docker-compose.yml build
+	@docker compose --file docker-compose.yml up --detach
 
 # stop
-.PHONY: stop/full stop/lite
+.PHONY: stop
 
-## stop/full: Stops Saint Anonymous full setup
-stop/full:
-	@docker-compose --file docker-compose.full.yml down --volumes
-
-## stop/lite: Stops Saint Anonymous lite setup
-stop/lite:
-	@docker-compose --file docker-compose.lite.yml down --volumes
+## stop: Stops Saint Anonymous
+stop:
+	@docker compose --file docker-compose.yml down --volumes
 
 .PHONY: config 
 config:
